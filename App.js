@@ -8,7 +8,7 @@ import ProfileComponent from './src/components/profile/profile.component';
 const App = StackNavigator({
     List: {screen: ListContainer},
     Profile: {
-        path: '/players/:name',
+        path: '/players/:id',
         screen: ProfileComponent
     }
 });

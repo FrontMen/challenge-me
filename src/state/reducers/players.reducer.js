@@ -1,26 +1,40 @@
 const initialState = {
     ids: [
-        "Remco", "Bob", "Lasse", "Jeroen"
+        1,2,3,4
     ],
     entities: {
-        "Remco" : {
-            name: "Remco"
+        1 : {
+            id: 1,
+            name: "Remco",
+            rating: 1500
         },
-        "Bob" : {
-            name: "Bob"
+        2 : {
+            id: 2,
+            name: "Bob",
+            rating: 1500
         },
-        "Lasse" : {
-            name: "Lasse"
+        3 : {
+            id: 3,
+            name: "Lasse",
+            rating: 1500
         },
-        "Jeroen" : {
-            name: "Jeroen"
+        4 : {
+            id: 4,
+            name: "Jeroen",
+            rating: 1500
         },
     }
 }
 
 
 export const reducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case 'CHALLENGE': {
+            return state;
+        }
+        default:
+            return state;
+    }
 }
 
 export const getIds = state => state.ids;
