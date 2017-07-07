@@ -1,16 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Provider, connect} from 'react-redux';
-import {store} from './src/state/state';
-import List from './src/components/list.component';
-
-const App = ({players}) => {
-    return (
-        <View style={styles.container}>
-            <List players={players}></List>
-        </View>
-    );
-}
+import {Provider} from 'react-redux';
+import store from './src/state/state';
+import ListContainer from './src/components/list/list.container';
 
 const styles = StyleSheet.create({
     container: {
@@ -21,15 +13,14 @@ const styles = StyleSheet.create({
     },
 });
 
-const ConnectedApp = connect(state => state)(App);
+const App = () => (
+    <View style={styles.container}>
+        <ListContainer/>
+    </View>
+);
 
-export default class AppRoot extends React.Component {
-
-    render() {
-        return (
-            <Provider store={store}>
-                <ConnectedApp />
-            </Provider>
-        )
-    }
-}
+export default () => (
+    <Provider store={store}>
+        <App />
+    </Provider>
+);

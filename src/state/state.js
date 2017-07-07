@@ -5,4 +5,9 @@ const reducers = combineReducers({
     players: playersReducer
 });
 
-export const store = createStore(reducers);
+export default createStore(reducers);
+
+/**
+ * Selector functions
+ */
+export const getPlayers = state => state.players;
