@@ -1,4 +1,4 @@
-import uuid from 'node-uuid';
+import v4 from 'uuid';
 
 const initialState = {
   ids: [1],
@@ -19,7 +19,7 @@ export const reducer = (state = initialState, action) => {
     case 'CHALLENGE':
       return {
         ...state,
-        [uuid.v4()]: {
+        [v4()]: {
           from: action.payload.from,
           to: action.payload.to
         }
