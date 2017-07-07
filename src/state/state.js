@@ -1,8 +1,10 @@
 import {createStore, combineReducers} from 'redux';
-import {playersReducer} from './reducers/players.reducer';
+import {createSelector} from 'reselect';
+import * as players from './reducers/players.reducer';
+
 
 const reducers = combineReducers({
-    players: playersReducer
+    players: players.reducer
 });
 
 export default createStore(reducers);
@@ -10,4 +12,6 @@ export default createStore(reducers);
 /**
  * Selector functions
  */
-export const getPlayers = state => state.players;
+const getPlayersState = state => state.players;
+export const getPlayers = createSelector(getPlayersState, players.getAll);
+export const getPlayerEntities = createSelector(getPlayersState, players.getEntities);

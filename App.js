@@ -1,23 +1,18 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 import {Provider} from 'react-redux';
 import store from './src/state/state';
 import ListContainer from './src/components/list/list.container';
+import ProfileComponent from './src/components/profile/profile.component';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+const App = StackNavigator({
+    List: {screen: ListContainer},
+    Profile: {
+        path: '/players/:name',
+        screen: ProfileComponent
+    }
 });
 
-const App = () => (
-    <View style={styles.container}>
-        <ListContainer/>
-    </View>
-);
 
 export default () => (
     <Provider store={store}>

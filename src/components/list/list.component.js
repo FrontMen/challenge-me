@@ -1,8 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Button} from 'react-native';
 
-export default ({players}) => {
-    const renderListItem = (data, idx) => <Text key={`list_${idx}`}>{data.name}</Text>;
+export default ({players, navigation}) => {
+    const renderListItem = (player, idx) => (<Button
+        onPress={() => navigation.navigate('Profile', player)}
+        key={`list_${idx}`}
+        title={player.name}>
+    </Button>);
 
     return (
         <View>
