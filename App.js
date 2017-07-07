@@ -1,24 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Provider, connect} from 'react-redux';
+import {store} from './src/state/state';
+import List from './src/components/list.component';
 
-export default class App extends React.Component {
-  render() {
+const App = ({players}) => {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <View style={styles.container}>
+            <List players={players}></List>
+        </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
+
+const ConnectedApp = connect(state => state)(App);
+
+export default class AppRoot extends React.Component {
+
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedApp />
+            </Provider>
+        )
+    }
+}
