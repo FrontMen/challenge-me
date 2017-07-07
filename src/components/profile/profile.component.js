@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {connect} from 'react-redux';
-import {getPlayerEntities} from '../../state/state';
+import {getChallenges, getPlayerEntities} from '../../state/state';
 
 const mapStateToProps = (state, ownState) => {
     const players = getPlayerEntities(state);
+    const challenges = getChallenges(state);
+    console.log(challenges);
     const id = ownState.navigation.state.params.id;
     return {player: players[id]};
 };

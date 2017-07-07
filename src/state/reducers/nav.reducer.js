@@ -1,18 +1,15 @@
-const getInitialState = AppNavigator =>
-  AppNavigator.router.getStateForAction(
-    AppNavigator.router.getActionForPathAndParams('Home')
-  );
+import {AppNavigator} from '../../navigators/app.navigator';
 
-export const reducer = Navigator => (
-  state = getInitialState(Navigator),
-  action
-) => {
-  const nextState = AppNavigator.router.getStateForAction(action, state);
+const initialState = AppNavigator.router.getStateForAction(
+    AppNavigator.router.getActionForPathAndParams('List')
+);
 
-  // Simply return the original `state` if `nextState` is null or undefined.
-  return nextState || state;
-};
-
-export const createNavReducer = AppNavigator => {
-  return reducer(AppNavigator);
-};
+export const reducer = (state = initialState, action) => {
+    let nextState;
+    switch (action.type) {
+        default:
+            nextState = AppNavigator.router.getStateForAction(action, state);
+            break;
+    }
+    return nextState || state;
+}
